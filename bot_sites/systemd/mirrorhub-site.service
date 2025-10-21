@@ -1,0 +1,13 @@
+[Unit]
+Description=MirrorHub Site (FastAPI)
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/root/mirrorhub
+Environment="PYTHONUNBUFFERED=1"
+ExecStart=/root/mirrorhub/.venv/bin/uvicorn site.app:app --host 127.0.0.1 --port 8080 --proxy-headers
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

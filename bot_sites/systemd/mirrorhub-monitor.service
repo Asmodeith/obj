@@ -1,0 +1,13 @@
+[Unit]
+Description=MirrorHub Monitor
+After=network.target
+
+[Service]
+User=root
+WorkingDirectory=/root/mirrorhub
+Environment="PYTHONUNBUFFERED=1"
+ExecStart=/root/mirrorhub/.venv/bin/python -m services.monitor
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
